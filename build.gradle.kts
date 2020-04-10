@@ -16,9 +16,12 @@ repositories {
 }
 
 dependencies {
-	implementation("org.axonframework:axon-spring-boot-starter:4.3")
+	implementation("org.axonframework:axon-spring-boot-starter:4.3") {
+		exclude(group = "org.axonframework", module = "axon-server-connector")
+	}
 	implementation("org.springframework.boot:spring-boot-starter-webflux")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+	implementation("io.github.microutils:kotlin-logging:1.7.6")
 	implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
