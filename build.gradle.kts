@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-	id("org.springframework.boot") version "2.2.6.RELEASE"
+	id("org.springframework.boot") version "2.3.0.RELEASE"
 	id("io.spring.dependency-management") version "1.0.9.RELEASE"
 	kotlin("jvm") version "1.3.71"
 	kotlin("plugin.spring") version "1.3.71"
@@ -16,7 +16,7 @@ repositories {
 }
 
 dependencies {
-	implementation("org.axonframework:axon-spring-boot-starter:4.3") {
+	implementation("org.axonframework:axon-spring-boot-starter:4.3.3") {
 		exclude(group = "org.axonframework", module = "axon-server-connector")
 	}
 	implementation("org.springframework.boot:spring-boot-starter-webflux")
