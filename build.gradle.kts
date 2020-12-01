@@ -1,22 +1,23 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-	id("org.springframework.boot") version "2.3.0.RELEASE"
+	java
+	id("org.springframework.boot") version "2.4.0"
 	id("io.spring.dependency-management") version "1.0.9.RELEASE"
-	kotlin("jvm") version "1.3.71"
-	kotlin("plugin.spring") version "1.3.71"
+	kotlin("jvm") version "1.4.20"
+	kotlin("plugin.spring") version "1.4.20"
 }
 
 group = "com.example"
 version = "0.0.1-SNAPSHOT"
-java.sourceCompatibility = JavaVersion.VERSION_1_8
+java.sourceCompatibility = JavaVersion.VERSION_11
 
 repositories {
 	mavenCentral()
 }
 
 dependencies {
-	implementation("org.axonframework:axon-spring-boot-starter:4.3.3") {
+	implementation("org.axonframework:axon-spring-boot-starter:4.4.5") {
 		exclude(group = "org.axonframework", module = "axon-server-connector")
 	}
 	implementation("org.springframework.boot:spring-boot-starter-webflux")
@@ -24,7 +25,6 @@ dependencies {
 	implementation("io.github.microutils:kotlin-logging:1.7.6")
 	implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
-	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core")
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-jdk8")
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
@@ -41,6 +41,6 @@ tasks.withType<Test> {
 tasks.withType<KotlinCompile> {
 	kotlinOptions {
 		freeCompilerArgs = listOf("-Xjsr305=strict")
-		jvmTarget = "1.8"
+		jvmTarget = "11"
 	}
 }
