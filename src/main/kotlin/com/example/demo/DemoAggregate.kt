@@ -6,6 +6,8 @@ import org.axonframework.modelling.command.AggregateIdentifier
 import org.axonframework.modelling.command.AggregateLifecycle.apply
 import org.axonframework.modelling.command.TargetAggregateIdentifier
 import org.axonframework.spring.stereotype.Aggregate
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.context.ApplicationContext
 
 @Aggregate
 class DemoAggregate() {
@@ -13,7 +15,10 @@ class DemoAggregate() {
     lateinit var id: String
 
     @CommandHandler
-    constructor(command: CreateDemoAggregateCommand) : this() {
+    constructor(
+        command: CreateDemoAggregateCommand,
+        @Autowired applicationContext: ApplicationContext
+    ) : this() {
         apply(
             DemoAggregateCreatedEvent(command.id)
         )
